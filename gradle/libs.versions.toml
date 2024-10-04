@@ -1,0 +1,29 @@
+[versions]
+agp = "8.6.0"
+kotlin = "1.9.0"
+coreKtx = "1.13.1"
+appcompat = "1.7.0"
+fragmentKtx = "1.8.4"
+material = "1.12.0"
+roomCompiler = "2.6.1"
+roomKtx = "2.6.1"
+kspVersion = "1.9.0-1.0.12"
+roomRuntime = "2.6.1"
+roomCoroutines = "2.1.0-alpha04" # Ajoute cette ligne pour KSP
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-fragment = { group = "androidx.fragment", name = "fragment", version = "1.8.4" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomRuntime" }
+androidx-room-coroutines = { group = "androidx.room", name = "room-coroutines", version.ref = "roomCoroutines" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "kspVersion" } # Ajoute KSP ici
+
