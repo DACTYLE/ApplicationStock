@@ -7,11 +7,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dactyle.applicationstock.database.entities.Article
 import com.dactyle.applicationstock.database.repositories.ArticleRepo
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
 class StockListViewModel (private val articleRepository: ArticleRepo) : ViewModel() {
 
-    private val _articles = MutableLiveData<List<Article>>()
+    private val _articles = MutableLiveData<List<Article>>(emptyList())
     val articles: LiveData<List<Article>> get() = _articles
 
     private val _articlesByCategory = MutableLiveData<List<Article>>()
@@ -20,20 +23,28 @@ class StockListViewModel (private val articleRepository: ArticleRepo) : ViewMode
     // Récupérer tous les articles dans une coroutine
     fun fetchArticles() {
         viewModelScope.launch {
-            try {
-                val fetchedArticles = articleRepository.getAllArticles() // Appel suspendu
-                _articles.postValue(fetchedArticles) // Mise à jour de la LiveData
-            } catch (e: Exception) {
-                // Gestion des erreurs
-                Log.e("ArticleViewModel", "Erreur lors de la récupération des articles", e)
-            }
+            articleRepository.getAllArticles() // Retourne un Flow
+                .catch { e ->
+                    // Gestion des erreurs si nécessaire
+                    Log.e("ArticleViewModel", "Erreur lors de la récupération des articles", e)
+                }
+                .collect { fetchedArticles ->
+                    _articles.value = fetchedArticles // Mise à jour du StateFlow
+                }
         }
     }
 
     // Récupérer les articles par catégorie dans une coroutine
     fun fetchArticlesByCategory(category: String) {
         viewModelScope.launch {
-            _articlesByCategory.value = articleRepository.getArticlesByCategory(category) // Appel suspendu
+            articleRepository.getArticlesByCategory(category) // Retourne un Flow
+                .catch { e ->
+                    // Gestion des erreurs
+                    Log.e("ArticleViewModel", "Erreur lors de la récupération des articles par catégorie", e)
+                }
+                .collect { fetchedArticlesByCategory ->
+                    _articlesByCategory.value = fetchedArticlesByCategory // Mise à jour du StateFlow
+                }
         }
     }
 

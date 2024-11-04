@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Application Stock</string>
+    <string name="apropos_title">A propos</string>
+    <string name="aparametre_title">Paramètres</string>
 </resources>

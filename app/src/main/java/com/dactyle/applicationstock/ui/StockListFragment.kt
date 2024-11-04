@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dactyle.applicationstock.R
@@ -16,6 +19,7 @@ import com.dactyle.applicationstock.database.repositories.ArticleRepo
 import com.dactyle.applicationstock.ui.adapters.StockRecycleAdapter
 import com.dactyle.applicationstock.ui.viewmodel.StockListViewModel
 import com.dactyle.applicationstock.ui.viewmodel.StockListViewModelFactory
+import kotlinx.coroutines.launch
 
 class StockListFragment : Fragment() {
     private lateinit var viewModel: StockListViewModel
@@ -54,7 +58,14 @@ class StockListFragment : Fragment() {
             Log.d("ArticleFragment", "Articles fetched: ${articles.size}") // Vérifie le nombre d'articles
             updateRecyclerView(articles)
         }
-
+        /*viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.articles.collect { articles ->
+                    Log.d("ArticleFragment", "Articles fetched: ${articles.size}") // Vérifie le nombre d'articles
+                    updateRecyclerView(articles)
+                }
+            }
+        }*/
         viewModel.fetchArticles()
 
     }

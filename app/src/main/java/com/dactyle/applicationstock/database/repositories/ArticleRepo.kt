@@ -3,11 +3,12 @@ package com.dactyle.applicationstock.database.repositories
 import androidx.lifecycle.LiveData
 import com.dactyle.applicationstock.database.entities.Article
 import com.dactyle.applicationstock.database.entities.ArticleDAO
+import kotlinx.coroutines.flow.Flow
 
 class ArticleRepo (private val articleDao: ArticleDAO) {
 
     // Méthode pour obtenir tous les articles
-    suspend fun getAllArticles(): List<Article> {
+    suspend fun getAllArticles(): Flow<List<Article>> {
         return articleDao.getAllArticles()
     }
 
@@ -17,7 +18,7 @@ class ArticleRepo (private val articleDao: ArticleDAO) {
     }
 
     // Méthode pour obtenir les articles par catégorie
-    suspend fun getArticlesByCategory(category: String): List<Article> {
+    suspend fun getArticlesByCategory(category: String): Flow<List<Article>> {
         return articleDao.getArticlesByCategory(category)
     }
 }

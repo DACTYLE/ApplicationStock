@@ -26,4 +26,6 @@
         </activity>
     </application>
 
+    <!-- Si besoin d'accéder à Internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
