@@ -1,6 +1,7 @@
 package com.dactyle.applicationstock.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
@@ -62,6 +63,9 @@ class LoginFragment : Fragment() {
                     navController.navigate(R.id.action_loginFragment_to_articleFragment)
                 } else {
                     // Erreur de connexion
+
+                    Log.d("DebugMyApp", task.exception?.message ?: "erreur inconnue");
+
                     Toast.makeText(requireContext(), "Échec de la connexion : ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }

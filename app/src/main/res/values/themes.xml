@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.ApplicationStock" parent="Theme.MaterialComponents.DayNight.DarkActionBar" />
+    <style name="Theme.ApplicationStock" parent="Theme.MaterialComponents.Light.DarkActionBar" >
+        <item name="android:windowSplashScreenBackground">@color/splash_background</item>
+        <!-- Icone du splash screen -->
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+    </style>
+    <style name="Theme.NavigationDrawer" parent="Theme.ApplicationStock" />
+
 </resources>

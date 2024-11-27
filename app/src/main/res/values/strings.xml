@@ -2,4 +2,6 @@
     <string name="app_name">Application Stock</string>
     <string name="apropos_title">A propos</string>
     <string name="aparametre_title">Paramètres</string>
+    <string name="open_drawer">Ouvrir</string>
+    <string name="close_drawer">Fermer</string>
 </resources>
