@@ -17,6 +17,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -60,6 +61,17 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.google.services)
 
+    implementation(libs.androidx.junit.ktx)
+
+    implementation(libs.androidx.fragment.testing)
+    implementation(libs.androidx.espresso.core)
+    implementation(libs.espresso.core)
+    implementation(libs.espresso.intents)
+    implementation(libs.androidx.ui.graphics.android)
+    androidTestImplementation(libs.androidx.junit)
+    debugImplementation(libs.androidx.fragment.testing.manifest)
+
     ksp(libs.androidx.room.compiler);
     implementation(libs.androidx.room.ktx)
+    testImplementation("junit:junit:4.13.2")
 }

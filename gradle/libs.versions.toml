@@ -18,6 +18,15 @@ androidxNavigationSafeargsKotlinGradlePlugin = "2.6.0"
 googleServices = "4.4.2"
 googleGmsGoogleServices = "4.4.2"
 androidxNavigationSafeargsKotlinGradlePluginVersion = "2.8.2"
+fragmentTestingManifest = "1.8.5"
+fragmentTesting = "1.8.5"
+junitKtx = "1.2.1"
+junit = "1.2.1"
+espressoIntents = "3.0.2"
+espressoCore = "3.0.2"
+espressoCoreVersion = "3.6.1"
+uiGraphicsAndroid = "1.7.6"
+exoplayerRobolectricutils = "2.19.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -36,6 +45,15 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 androidx-androidx-navigation-safeargs-kotlin-gradle-plugin = { group = "androidx.navigation.safeargs.kotlin", name = "androidx.navigation.safeargs.kotlin.gradle.plugin", version.ref = "androidxNavigationSafeargsKotlinGradlePlugin" }
 google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices" }
 androidx-navigation-safeargs-kotlin-gradle-plugin = { group = "androidx.navigation.safeargs.kotlin", name = "androidx.navigation.safeargs.kotlin.gradle.plugin", version.ref = "androidxNavigationSafeargsKotlinGradlePluginVersion" }
+androidx-fragment-testing-manifest = { group = "androidx.fragment", name = "fragment-testing-manifest", version.ref = "fragmentTestingManifest" }
+androidx-fragment-testing = { group = "androidx.fragment", name = "fragment-testing", version.ref = "fragmentTesting" }
+androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtx" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
+espresso-intents = { group = "com.android.support.test.espresso", name = "espresso-intents", version.ref = "espressoIntents" }
+espresso-core = { group = "com.android.support.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCoreVersion" }
+androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version.ref = "uiGraphicsAndroid" }
+exoplayer-robolectricutils = { group = "com.google.android.exoplayer", name = "exoplayer-robolectricutils", version.ref = "exoplayerRobolectricutils" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

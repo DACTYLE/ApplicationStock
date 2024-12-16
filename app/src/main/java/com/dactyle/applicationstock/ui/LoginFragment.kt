@@ -1,6 +1,8 @@
 package com.dactyle.applicationstock.ui
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -42,7 +44,8 @@ class LoginFragment : Fragment() {
             if(!::auth.isInitialized) auth = FirebaseAuth.getInstance()
 
             if (!isValidEmail(email)) {
-                Toast.makeText(requireContext(), "Email non valide", Toast.LENGTH_SHORT).show()
+                emailEditText.error = "Email non valide"
+                Toast.makeText(requireContext(), "Email non valide", Toast.LENGTH_LONG).show()
             }
             else if (password.isEmpty()) {
                 passwordEditText.error = "Mot de passe requis"

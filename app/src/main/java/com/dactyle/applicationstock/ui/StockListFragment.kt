@@ -16,7 +16,9 @@ import com.dactyle.applicationstock.R
 import com.dactyle.applicationstock.database.AppDatabase
 import com.dactyle.applicationstock.database.entities.Article
 import com.dactyle.applicationstock.database.http.ArticleApiService
+import com.dactyle.applicationstock.database.repositories.ArticleDataSource
 import com.dactyle.applicationstock.database.repositories.ArticleRepo
+import com.dactyle.applicationstock.database.repositories.SourcesFactory
 import com.dactyle.applicationstock.database.repositories.sources.RetrofitArticleDataSource
 import com.dactyle.applicationstock.database.repositories.sources.RoomArticleDataSource
 import com.dactyle.applicationstock.ui.adapters.StockRecycleAdapter
@@ -54,18 +56,8 @@ class StockListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //val database = AppDatabase.getDatabase(requireContext())
-        //val originDataSource = RoomArticleDataSource(database.articleDao());
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://firestore.googleapis.com/v1/projects/applicationstock-86cf7/databases/(default)/documents/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .build()
-        val apiService = retrofit.create(ArticleApiService::class.java)
-        val originDataSource = RetrofitArticleDataSource(apiService)
-
-        val articleRepository = ArticleRepo(originDataSource)
+        val originDataSource = SourcesFactory.getSourceFromId("HTTP", requireContext());
+        val articleRepository = ArticleRepo(originDataSource);
 
         viewModel = ViewModelProvider(this, StockListViewModelFactory(articleRepository)).get(StockListViewModel::class.java)
 
